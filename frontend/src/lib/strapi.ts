@@ -16,6 +16,7 @@ export async function fetchAPI(
         const mergedOptions = {
             headers: {
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "true",
             },
             next: { revalidate: 60 }, // Default revalidation
             ...options,
