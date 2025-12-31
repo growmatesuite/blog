@@ -20,9 +20,11 @@ export function ArticleContent({ content }: ArticleContentProps) {
             prose-a:text-green-primary prose-a:no-underline hover:prose-a:underline
             prose-blockquote:border-l-green-primary prose-blockquote:bg-white/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:text-gray-300
             prose-img:rounded-3xl prose-img:border prose-img:border-white/10
-            prose-code:text-purple-300 prose-code:bg-purple-500/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none
-            prose-pre:bg-black-tertiary prose-pre:border prose-pre:border-white/5
-            max-w-none">
+            prose-code:text-purple-300 prose-code:bg-purple-500/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none prose-code:break-words
+            prose-pre:bg-black-tertiary prose-pre:border prose-pre:border-white/5 prose-pre:overflow-x-auto prose-pre:whitespace-pre-wrap prose-pre:break-words
+            prose-li:text-gray-400 prose-li:marker:text-purple-primary
+            max-w-none
+            [&_*]:break-words [&_pre]:!whitespace-pre-wrap [&_code]:!whitespace-pre-wrap">
             <BlocksRenderer
                 content={content}
                 blocks={{

@@ -59,19 +59,19 @@ export function NewsletterSection() {
                                 </div>
                             ) : (
                                 <form onSubmit={handleSubmit} className="space-y-4">
-                                    <div className="relative group/input">
+                                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 group/input">
                                         <input
                                             type="email"
                                             required
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             placeholder="Seu melhor e-mail"
-                                            className="w-full h-16 bg-black-base/50 border border-white/10 rounded-2xl px-6 text-white placeholder:text-gray-600 focus:outline-none focus:border-green-primary/50 transition-all group-hover/input:border-white/20"
+                                            className="w-full h-14 sm:h-16 bg-black-base/50 border border-white/10 rounded-2xl sm:rounded-r-none px-6 text-white placeholder:text-gray-500 focus:outline-none focus:border-green-primary/50 transition-all group-hover/input:border-white/20"
                                         />
                                         <button
                                             type="submit"
                                             disabled={status === 'loading'}
-                                            className="absolute right-2 top-2 bottom-2 px-6 bg-green-primary text-black-base rounded-xl font-bold flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100"
+                                            className="h-14 sm:h-16 px-6 sm:px-8 bg-green-primary text-black-base rounded-2xl sm:rounded-l-none sm:rounded-r-2xl font-bold flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 shrink-0"
                                         >
                                             {status === 'loading' ? (
                                                 <div className="w-5 h-5 border-2 border-black-base/30 border-t-black-base rounded-full animate-spin" />
