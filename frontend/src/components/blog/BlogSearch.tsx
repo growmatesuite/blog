@@ -48,7 +48,7 @@ export function BlogSearch() {
                 isFocused ? "border-green-primary/50 shadow-[0_0_20px_rgba(0,229,153,0.1)]" : "border-white/10"
             )}>
                 <Search className={cn(
-                    "ml-4 transition-colors",
+                    "ml-4 transition-colors shrink-0",
                     isFocused ? "text-green-primary" : "text-gray-500"
                 )} size={20} />
 
@@ -58,15 +58,15 @@ export function BlogSearch() {
                     onChange={(e) => setQuery(e.target.value)}
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
-                    placeholder="O que sua empresa quer escalar hoje?"
-                    className="flex-1 bg-transparent border-none px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-0"
+                    placeholder={mounted && window.innerWidth < 640 ? "Buscar artigos..." : "O que sua empresa quer escalar hoje?"}
+                    className="flex-1 bg-transparent border-none px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-0 min-w-0"
                 />
 
                 {query && (
                     <button
                         type="button"
                         onClick={clearSearch}
-                        className="p-2 text-gray-500 hover:text-white transition-colors"
+                        className="p-2 text-gray-500 hover:text-white transition-colors shrink-0"
                     >
                         <X size={18} />
                     </button>
@@ -74,13 +74,14 @@ export function BlogSearch() {
 
                 <button
                     type="submit"
-                    className="bg-white/5 hover:bg-white/10 text-white font-bold py-2 px-6 rounded-xl transition-all mr-1"
+                    className="bg-white/5 hover:bg-white/10 text-white font-bold py-2 px-4 sm:px-6 rounded-xl transition-all mr-1 shrink-0 flex items-center justify-center min-w-[44px]"
                 >
-                    BUSCAR
+                    <span className="hidden sm:inline">BUSCAR</span>
+                    <Search className="sm:hidden" size={18} />
                 </button>
             </div>
 
-            <div className="absolute -bottom-6 left-6 flex gap-3">
+            <div className="absolute -bottom-6 left-6 flex flex-wrap gap-3">
                 {['IA', 'Automação', 'Growth'].map((tag) => (
                     <button
                         key={tag}
@@ -89,7 +90,7 @@ export function BlogSearch() {
                             setQuery(tag);
                             router.push(`/blog?q=${tag}`);
                         }}
-                        className="text-[10px] font-bold text-gray-600 hover:text-green-primary transition-colors tracking-widest"
+                        className="text-[10px] font-bold text-gray-600 hover:text-green-primary transition-colors tracking-widest whitespace-nowrap"
                     >
                         #{tag}
                     </button>

@@ -29,21 +29,21 @@ export function NewsletterSection() {
     return (
         <section className="relative w-full py-20 overflow-hidden bg-black-base">
             <div className="container mx-auto px-4 relative z-10">
-                <div className="max-w-5xl mx-auto bg-gradient-to-br from-black-tertiary via-black-secondary to-black-tertiary rounded-[3rem] border border-white/5 p-8 md:p-16 relative overflow-hidden group">
+                <div className="max-w-5xl mx-auto bg-gradient-to-br from-black-tertiary via-black-secondary to-black-tertiary rounded-[2rem] md:rounded-[3rem] border border-white/5 p-6 md:p-16 relative overflow-hidden group">
                     {/* Decorative Elements */}
                     <div className="absolute -top-24 -right-24 w-64 h-64 bg-green-primary/5 blur-[100px] rounded-full group-hover:bg-green-primary/10 transition-all duration-1000" />
                     <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-primary/5 blur-[100px] rounded-full group-hover:bg-purple-primary/10 transition-all duration-1000" />
 
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6">
+                    <div className="grid lg:grid-cols-2 gap-10 md:gap-12 items-center">
+                        <div className="space-y-4 md:space-y-6">
                             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-primary/10 border border-green-primary/20 text-green-primary text-[10px] font-bold uppercase tracking-widest">
                                 <span className="w-1.5 h-1.5 rounded-full bg-green-primary animate-pulse" />
                                 Newsletter Semanal
                             </span>
-                            <h2 className="text-3xl md:text-5xl font-bold font-heading text-white leading-tight">
+                            <h2 className="text-2xl md:text-5xl font-bold font-heading text-white leading-tight">
                                 Mantenha-se à frente com insights de <span className="text-gradient-brand">IA & Automação</span>
                             </h2>
-                            <p className="text-gray-500 text-lg md:text-xl leading-relaxed max-w-md">
+                            <p className="text-gray-500 text-sm md:text-xl leading-relaxed max-w-md">
                                 Receba as estratégias de crescimento mais eficientes diretamente na sua caixa de entrada. Sem spam, apenas valor.
                             </p>
                         </div>

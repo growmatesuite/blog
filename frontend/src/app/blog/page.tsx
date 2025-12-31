@@ -47,11 +47,11 @@ export default async function BlogPage({
 
     return (
         <div className="container mx-auto px-4 py-16">
-            <div className="mb-16 text-center animate-in fade-in slide-in-from-bottom duration-700">
-                <h1 className="text-5xl font-bold font-heading tracking-tight sm:text-6xl md:text-7xl text-white mb-4">
-                    Inteligência que <span className="text-gradient-brand">escala</span>. <br />Resultados que orquestram.
+            <div className="mb-12 md:mb-16 text-center animate-in fade-in slide-in-from-bottom duration-700">
+                <h1 className="text-3xl font-bold font-heading tracking-tight sm:text-6xl md:text-7xl text-white mb-4 leading-[1.1]">
+                    Inteligência que <span className="text-gradient-brand">escala</span>. <br className="hidden sm:block" />Resultados que orquestram.
                 </h1>
-                <p className="mt-4 text-gray-400 md:text-xl max-w-3xl mx-auto font-light leading-relaxed">
+                <p className="mt-4 text-gray-400 text-base md:text-xl max-w-3xl mx-auto font-light leading-relaxed px-4">
                     Insights sobre IA Agêntica, LLMs Enterprise e como construir uma força de trabalho infinitamente escalável.
                 </p>
             </div>
@@ -103,26 +103,26 @@ export default async function BlogPage({
                                         )}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black-base via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-black-base/80" />
                                     </div>
-                                    <div className="flex flex-col justify-center p-8 md:p-12 md:col-span-2 relative bg-black-base/20 backdrop-blur-3xl">
-                                        <div className="mb-6 flex flex-wrap gap-2">
+                                    <div className="flex flex-col justify-center p-6 md:p-12 md:col-span-2 relative bg-black-base/20 backdrop-blur-3xl">
+                                        <div className="mb-4 md:mb-6 flex flex-wrap gap-2">
                                             {articles[0].categories?.map((category: any) => (
                                                 <span
                                                     key={category.id}
-                                                    className="inline-flex items-center rounded-full border border-green-primary/30 bg-green-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-green-primary"
+                                                    className="inline-flex items-center rounded-full border border-green-primary/30 bg-green-primary/10 px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-wider text-green-primary"
                                                 >
                                                     {category.name}
                                                 </span>
                                             ))}
                                         </div>
-                                        <h2 className="mb-6 text-3xl font-bold font-heading leading-tight text-white transition-colors group-hover:text-green-primary sm:text-4xl">
+                                        <h2 className="mb-4 md:mb-6 text-2xl font-bold font-heading leading-tight text-white transition-colors group-hover:text-green-primary sm:text-4xl">
                                             {articles[0].title}
                                         </h2>
-                                        <p className="mb-8 text-lg text-gray-500 line-clamp-3 leading-relaxed">
+                                        <p className="mb-6 md:mb-8 text-sm md:text-lg text-gray-500 line-clamp-2 md:line-clamp-3 leading-relaxed">
                                             {articles[0].excerpt}
                                         </p>
-                                        <div className="mt-auto flex items-center gap-4 pt-6 border-t border-white/5">
+                                        <div className="mt-auto flex items-center gap-4 pt-4 md:pt-6 border-t border-white/5">
                                             {articles[0].authors?.[0]?.avatar && (
-                                                <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/10">
+                                                <div className="relative h-8 w-8 md:h-10 md:w-10 overflow-hidden rounded-full border border-white/10">
                                                     <Image
                                                         src={getStrapiMedia(articles[0].authors[0].avatar.url) || ""}
                                                         alt={articles[0].authors[0].name}
@@ -133,12 +133,12 @@ export default async function BlogPage({
                                                     />
                                                 </div>
                                             )}
-                                            <div className="text-sm">
+                                            <div className="text-[10px] md:text-sm">
                                                 <p className="font-medium text-white">{articles[0].authors?.[0]?.name}</p>
                                                 <p className="text-gray-600">{formatDate(articles[0].publishedAt)}</p>
                                             </div>
-                                            <div className="ml-auto flex items-center gap-2 text-green-primary font-bold text-sm tracking-wide group-hover:translate-x-1 transition-transform">
-                                                LER ARTIGO <span aria-hidden="true">→</span>
+                                            <div className="ml-auto flex items-center gap-2 text-green-primary font-bold text-[10px] md:text-sm tracking-wide group-hover:translate-x-1 transition-transform">
+                                                LER <span className="hidden sm:inline">ARTIGO</span> <span aria-hidden="true">→</span>
                                             </div>
                                         </div>
                                     </div>
@@ -172,8 +172,8 @@ export default async function BlogPage({
                                     )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black-tertiary via-transparent to-transparent opacity-50" />
                                 </div>
-                                <div className="flex flex-1 flex-col p-8">
-                                    <div className="mb-5 flex gap-2">
+                                <div className="flex flex-1 flex-col p-6 md:p-8">
+                                    <div className="mb-4 md:mb-5 flex gap-2">
                                         {article.categories?.map((category: any) => (
                                             <span
                                                 key={category.id}
@@ -183,15 +183,15 @@ export default async function BlogPage({
                                             </span>
                                         ))}
                                     </div>
-                                    <h2 className="mb-4 text-2xl font-bold font-heading text-white transition-colors group-hover:text-purple-primary leading-tight">
+                                    <h2 className="mb-4 text-xl md:text-2xl font-bold font-heading text-white transition-colors group-hover:text-purple-primary leading-tight">
                                         {article.title}
                                     </h2>
-                                    <p className="line-clamp-3 text-sm text-gray-500 leading-relaxed mb-6">
+                                    <p className="line-clamp-2 md:line-clamp-3 text-sm text-gray-500 leading-relaxed mb-6">
                                         {article.excerpt}
                                     </p>
-                                    <div className="mt-auto flex items-center justify-between text-xs text-gray-600 font-medium border-t border-white/5 pt-4">
+                                    <div className="mt-auto flex items-center justify-between text-[10px] md:text-xs text-gray-600 font-medium border-t border-white/5 pt-4">
                                         <span>{formatDate(article.publishedAt)}</span>
-                                        <span className="group-hover:text-white transition-colors">Leia mais</span>
+                                        <span className="group-hover:text-white transition-colors uppercase tracking-wider">Leia mais</span>
                                     </div>
                                 </div>
                             </Link>
