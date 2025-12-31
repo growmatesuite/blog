@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Growmate Brand Colors */
+  --color-black-base: #0B0B13;
+  --color-black-secondary: #0F1115;
+  --color-black-tertiary: #151823;
+  --color-gray-900: #1C2030;
+  --color-gray-800: #2A3245;
+  --color-gray-700: #3C4760;
+  --color-gray-600: #8A94B0;
+  --color-gray-500: #B6BFDA;
+  --color-gray-400: #E7EAF3;
+  --color-green-primary: #00E599;
+  --color-green-secondary: #10B981;
+  --color-purple-primary: #8B5CF6;
+  --color-purple-secondary: #7C3AED;
+  --color-accent-cyan: #22D3EE;
+
+  /* Font mappings to Next.js font variables */
+  --font-sans: var(--font-growmate-sans), system-ui, sans-serif;
+  --font-heading: var(--font-growmate-heading), system-ui, sans-serif;
+  --font-mono: var(--font-growmate-mono), monospace;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+}
+
+/* Base Theme Variables */
+:root {
+  --background: #0B0B13;
+  /* black-base */
+  --foreground: #E7EAF3;
+  /* gray-400 */
+  --card: #151823;
+  --card-foreground: #E7EAF3;
+  --popover: #0F1115;
+  --popover-foreground: #E7EAF3;
+  --primary: #00E599;
+  --primary-foreground: #0B0B13;
+  --secondary: #8B5CF6;
+  --secondary-foreground: #ffffff;
+  --muted: #1C2030;
+  --muted-foreground: #8A94B0;
+  --accent: #2A3245;
+  --accent-foreground: #00E599;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: #2A3245;
+  --input: #2A3245;
+  --ring: #00E599;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  --radius: 0.75rem;
+
+  /* Custom Vars */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow-glow-green: 0 0 24px rgba(0, 229, 153, 0.25);
+  --shadow-glow-purple: 0 0 24px rgba(139, 92, 246, 0.25);
+  --gradient-brand: linear-gradient(135deg, #00E599 0%, #8B5CF6 100%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Prose Overrides for Vision V3 */
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    margin-top: 2.5em !important;
+    margin-bottom: 1em !important;
+    scroll-margin-top: 100px;
+  }
+
+  .prose p {
+    margin-bottom: 1.5em !important;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .bg-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .text-gradient-brand {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hover-glow-green:hover {
+    box-shadow: var(--shadow-glow-green);
+    border-color: rgba(0, 229, 153, 0.3);
+  }
+
+  .hover-glow-purple:hover {
+    box-shadow: var(--shadow-glow-purple);
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    animation: gradient 3s ease infinite;
+  }
+}
