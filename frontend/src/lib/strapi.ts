@@ -30,13 +30,29 @@ export async function fetchAPI(
             `/api${path}${queryString ? `?${queryString}` : ""}`
         )}`;
 
+        console.log(`[Strapi Fetch] Fetching: ${requestUrl}`);
+
         // Trigger API call
         const response = await fetch(requestUrl, mergedOptions);
+
+        console.log(`[Strapi Fetch] Status: ${response.status} ${response.statusText}`);
+
+        if (!response.ok) {
+            const text = await response.text();
+            console.error(`[Strapi Fetch] Error Response (first 100 chars): ${text.substring(0, 100)}`);
+            throw new Error(`API call failed with status ${response.status}`);
+        }
+
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error(error);
-        throw new Error(`Please check if your server is running and you set all the required tokens.`);
+        console.error(`[Strapi Fetch] Catch Block Error:`, error);
+        // Return null or empty array instead of throwing to avoid crashing the build
+        // if it's the sitemap or feed routes
+        if (path === "/articles" || path === "/categories") {
+            return { data: [] };
+        }
+        throw error;
     }
 }
 
