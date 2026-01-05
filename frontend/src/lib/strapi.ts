@@ -14,12 +14,15 @@ export async function fetchAPI(
     try {
         // Merge default and user options
         const mergedOptions = {
+            next: { revalidate: 60 }, // Default revalidation
+            ...options,
             headers: {
                 "Content-Type": "application/json",
                 "ngrok-skip-browser-warning": "true",
+                "User-Agent": "StrapiNextClient",
+                // @ts-ignore
+                ...options?.headers,
             },
-            next: { revalidate: 60 }, // Default revalidation
-            ...options,
         };
 
         // Build request URL
@@ -31,6 +34,7 @@ export async function fetchAPI(
         )}`;
 
         console.log(`[Strapi Fetch] Fetching: ${requestUrl}`);
+        console.log(`[Strapi Fetch] Options:`, JSON.stringify(mergedOptions, null, 2));
 
         // Trigger API call
         const response = await fetch(requestUrl, mergedOptions);

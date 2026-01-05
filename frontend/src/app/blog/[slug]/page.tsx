@@ -21,6 +21,7 @@ async function getArticle(slug: string) {
             },
         },
     }, { cache: 'no-store' });
+
     return articles?.data?.length > 0 ? articles.data[0] : null;
 }
 
@@ -177,23 +178,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                         </div>
                     </div>
 
-                    {article.cover ? (
-                        <div className="relative aspect-video w-full overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl ring-1 ring-white/5">
-                            <Image
-                                src={getStrapiMedia(article.cover.formats?.large?.url || article.cover.url) || ""}
-                                alt={article.title}
-                                fill
-                                className="object-cover"
-                                priority
-                                unoptimized
-                                suppressHydrationWarning
-                            />
-                        </div>
-                    ) : (
-                        <div className="relative aspect-video w-full overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-green-primary/10 via-black-secondary to-purple-primary/10 flex items-center justify-center">
-                            <span className="text-white/5 font-heading font-bold text-6xl md:text-9xl tracking-tighter select-none">GROWMATE</span>
-                        </div>
-                    )}
+
 
                     {keyTakeaways.length > 0 && (
                         <div className="bg-gradient-to-br from-green-primary/10 via-white/5 to-transparent border border-green-primary/20 rounded-2xl md:rounded-3xl p-6 md:p-10 relative overflow-hidden group">
@@ -283,6 +268,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         </>
     );
 }
+
+
 
 async function RelatedArticles({ currentSlug }: { currentSlug: string }) {
     const articles = await fetchAPI("/articles", {
